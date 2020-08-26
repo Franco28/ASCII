@@ -151,8 +151,8 @@ namespace asciiApp
             buttonObtenerASCII.Show();
             buttonObtenerChar.Hide();
             buttonObtenerASCII.Location = new Point(617, 121);
-            labelBinTitle.Location = new Point(12, 306);
-            labelResuBinario.Location = new Point(15, 332);
+            labelBinTitle.Location = new Point(8, 307);
+            labelResuBinario.Location = new Point(8, 330);
             textBoxDecodificador.MaxLength = 4;
         }
 
@@ -169,6 +169,11 @@ namespace asciiApp
         {
             var about = new About();
             about.ShowDialog();
+        }
+
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
