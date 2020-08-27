@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,12 +30,12 @@ namespace asciiApp
             string s = textBoxDecodificador.Text;
             if (s.Equals(""))
             {
-                cAppend("Ingrese algún carácter");
-                MessageBox.Show("Ingrese algún carácter", @"DECOFICADOR ASCII", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cAppend("Ingrese algún caractér");
+                MessageBox.Show("Ingrese algún caractér", @"DECOFICADOR ASCII", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                cAppend("Decodificando carácter ASCII... " + s);
+                cAppend("Decodificando caractér ASCII... " + s);
                 await Task.Run(() =>
                 {
                     foreach (char c in s)
@@ -65,7 +64,7 @@ namespace asciiApp
             {
                 string hs = hexString.Substring(i, 2);
                 sb.Append(Convert.ToString(Convert.ToChar(Int32.Parse(hs, System.Globalization.NumberStyles.HexNumber))));
-                cAppend("Caráter: " + sb.ToString());
+                cAppend("Caractér: " + sb.ToString());
                 labelResuDecimal.Text = sb.ToString();
             }
             return sb.ToString();
@@ -110,7 +109,7 @@ namespace asciiApp
                         {
                             cAppend("-----------------------------------");
                             char c = Convert.ToChar(value);
-                            cAppend("Caráter: " + c.ToString());
+                            cAppend("Caractér: " + c.ToString());
                             labelResuDecimal.Text = c.ToString();
                             string binary = Convert.ToString(c, 2);
                             cAppend("Bin: " + binary);
@@ -135,8 +134,8 @@ namespace asciiApp
             textBoxDecodificador.Text = "";
 
             labelEj.Text = "Ej: ACh o 240";
-            labelTitulo.Text = "Ingrese el número Decimal o Hexadecimal a decodificar a carácter";
-            labelDecimal.Text = "Carácter";
+            labelTitulo.Text = "Ingrese el número Decimal o Hexadecimal a decodificar a caractér";
+            labelDecimal.Text = "Caractér";
             labelResuDecimal.Text = "...";
             labelHexadecimal.Hide();
             labelResuHexadecimal.Hide();
@@ -156,7 +155,7 @@ namespace asciiApp
             textBoxDecodificador.Text = "";
 
             labelEj.Text = "Ej: @";
-            labelTitulo.Text = "Ingrese el carácter a decodificar";
+            labelTitulo.Text = "Ingrese el caractér a decodificar";
             labelDecimal.Text = "Decimal";
             labelResuDecimal.Text = "...";
             labelHexadecimal.Show();

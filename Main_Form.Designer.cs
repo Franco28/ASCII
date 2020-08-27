@@ -69,7 +69,7 @@
             this.labelTitulo.Name = "labelTitulo";
             this.labelTitulo.Size = new System.Drawing.Size(319, 25);
             this.labelTitulo.TabIndex = 1;
-            this.labelTitulo.Text = "Ingrese el carácter a decodificar";
+            this.labelTitulo.Text = "Ingrese el caractér a decodificar";
             // 
             // textBoxDecodificador
             // 
@@ -144,7 +144,7 @@
             // 
             this.decodificarCaracterToolStripMenuItem.Name = "decodificarCaracterToolStripMenuItem";
             this.decodificarCaracterToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
-            this.decodificarCaracterToolStripMenuItem.Text = "Decodificar Carácter";
+            this.decodificarCaracterToolStripMenuItem.Text = "Decodificar Caractér";
             this.decodificarCaracterToolStripMenuItem.Click += new System.EventHandler(this.decodificarCaracterToolStripMenuItem_Click);
             // 
             // infoToolStripMenuItem
