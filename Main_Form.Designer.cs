@@ -53,7 +53,7 @@
             // buttonObtenerASCII
             // 
             this.buttonObtenerASCII.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonObtenerASCII.Location = new System.Drawing.Point(617, 121);
+            this.buttonObtenerASCII.Location = new System.Drawing.Point(617, 105);
             this.buttonObtenerASCII.Name = "buttonObtenerASCII";
             this.buttonObtenerASCII.Size = new System.Drawing.Size(75, 23);
             this.buttonObtenerASCII.TabIndex = 0;
@@ -65,7 +65,7 @@
             // 
             this.labelTitulo.AutoSize = true;
             this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitulo.Location = new System.Drawing.Point(12, 35);
+            this.labelTitulo.Location = new System.Drawing.Point(12, 24);
             this.labelTitulo.Name = "labelTitulo";
             this.labelTitulo.Size = new System.Drawing.Size(319, 25);
             this.labelTitulo.TabIndex = 1;
@@ -73,9 +73,11 @@
             // 
             // textBoxDecodificador
             // 
+            this.textBoxDecodificador.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxDecodificador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDecodificador.Location = new System.Drawing.Point(12, 93);
-            this.textBoxDecodificador.MaxLength = 4;
+            this.textBoxDecodificador.ForeColor = System.Drawing.Color.Black;
+            this.textBoxDecodificador.Location = new System.Drawing.Point(12, 77);
+            this.textBoxDecodificador.MaxLength = 1;
             this.textBoxDecodificador.Name = "textBoxDecodificador";
             this.textBoxDecodificador.Size = new System.Drawing.Size(680, 22);
             this.textBoxDecodificador.TabIndex = 2;
@@ -105,7 +107,7 @@
             // 
             this.labelResultadoASCII.AutoSize = true;
             this.labelResultadoASCII.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelResultadoASCII.Location = new System.Drawing.Point(12, 131);
+            this.labelResultadoASCII.Location = new System.Drawing.Point(12, 117);
             this.labelResultadoASCII.Name = "labelResultadoASCII";
             this.labelResultadoASCII.Size = new System.Drawing.Size(94, 20);
             this.labelResultadoASCII.TabIndex = 7;
@@ -156,7 +158,7 @@
             // buttonObtenerChar
             // 
             this.buttonObtenerChar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonObtenerChar.Location = new System.Drawing.Point(536, 121);
+            this.buttonObtenerChar.Location = new System.Drawing.Point(536, 105);
             this.buttonObtenerChar.Name = "buttonObtenerChar";
             this.buttonObtenerChar.Size = new System.Drawing.Size(75, 23);
             this.buttonObtenerChar.TabIndex = 9;
@@ -168,7 +170,7 @@
             // 
             this.labelEj.AutoSize = true;
             this.labelEj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEj.Location = new System.Drawing.Point(12, 74);
+            this.labelEj.Location = new System.Drawing.Point(12, 58);
             this.labelEj.Name = "labelEj";
             this.labelEj.Size = new System.Drawing.Size(40, 16);
             this.labelEj.TabIndex = 10;
@@ -219,11 +221,14 @@
             // 
             // console
             // 
-            this.console.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.console.Location = new System.Drawing.Point(284, 150);
+            this.console.BackColor = System.Drawing.Color.Black;
+            this.console.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.console.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.console.ForeColor = System.Drawing.Color.Gold;
+            this.console.Location = new System.Drawing.Point(284, 134);
             this.console.Name = "console";
             this.console.ReadOnly = true;
-            this.console.Size = new System.Drawing.Size(408, 206);
+            this.console.Size = new System.Drawing.Size(408, 222);
             this.console.TabIndex = 18;
             this.console.Text = "";
             // 

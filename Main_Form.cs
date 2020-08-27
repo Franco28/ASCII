@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,8 +29,6 @@ namespace asciiApp
         private async void buttonObtenerASCII_Click(object sender, EventArgs e)
         {
             string s = textBoxDecodificador.Text;
-            byte[] hexaenbytes = Encoding.Default.GetBytes(s);
-            var hexString = BitConverter.ToString(hexaenbytes);
             if (s.Equals(""))
             {
                 cAppend("Ingrese algún carácter");
@@ -40,21 +39,36 @@ namespace asciiApp
                 cAppend("Decodificando carácter ASCII... " + s);
                 await Task.Run(() =>
                 {
-                    cAppend("-----------------------------------");
                     foreach (char c in s)
                     {
-                        cAppend("Dec: " + Convert.ToInt32(c).ToString());
-                        labelResuDecimal.Text = Convert.ToInt32(c).ToString();
-                        hexString = hexString.Replace("-", "");
-                        labelResuHexadecimal.Text = hexString.ToString() + "h";
+                        cAppend("-----------------------------------");
+                        byte[] hexaenbytes = Encoding.Default.GetBytes(s);
+                        var hexString = BitConverter.ToString(hexaenbytes);
+                        int decValue = Convert.ToInt32(hexString, 16);
+                        string binary = Convert.ToString(decValue, 2);
+                        cAppend("Dec: " + decValue.ToString());
+                        labelResuDecimal.Text = decValue.ToString();
                         cAppend("Hexa: " + hexString.ToString() + "h");
-                        string binary = Convert.ToString(c, 2);
-                        labelResuBinario.Text = binary;
+                        labelResuHexadecimal.Text = hexString.ToString() + "h";
                         cAppend("Bin: " + binary);
+                        labelResuBinario.Text = binary;
+                        cAppend("-----------------------------------");
                     }
                 });
-                cAppend("-----------------------------------");
             }
+        }
+
+        public string Hex2Ascii(string hexString)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hexString.Length; i += 2)
+            {
+                string hs = hexString.Substring(i, 2);
+                sb.Append(Convert.ToString(Convert.ToChar(Int32.Parse(hs, System.Globalization.NumberStyles.HexNumber))));
+                cAppend("Caráter: " + sb.ToString());
+                labelResuDecimal.Text = sb.ToString();
+            }
+            return sb.ToString();
         }
 
         private async void buttonObtenerChar_Click(object sender, EventArgs e)
@@ -66,29 +80,28 @@ namespace asciiApp
                 MessageBox.Show("Ingrese algún número Hex o Dec", @"DECOFICADOR ASCII", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-            {          
+            {
                 if (s.EndsWith("h"))
                 {
                     cAppend("Decodificando hexa... " + s);
                     await Task.Run(() =>
-                    {
+                    {                        
                         cAppend("-----------------------------------");
                         string re = s.Replace("h", "").Trim();
                         int decValue = Convert.ToInt32(re, 16);
                         char c = (char)decValue;
-                        cAppend("Dec: " + c.ToString());
-                        labelResuDecimal.Text = c.ToString();
+                        Hex2Ascii(re);
                         string binary = Convert.ToString(c, 2);
                         cAppend("Bin: " + binary);
                         labelResuBinario.Text = binary;
+                        cAppend("-----------------------------------");
                     });
-                    cAppend("-----------------------------------");
                     return;
                 }
 
                 string input = s;
                 int value;
-                cAppend("Decodificando dec... " + input); 
+                cAppend("Decodificando dec... " + input);
                 await Task.Run(() =>
                 {
                     if (Int32.TryParse(input, out value))
@@ -96,7 +109,7 @@ namespace asciiApp
                         if (value >= 0 && value <= 255)
                         {
                             cAppend("-----------------------------------");
-                            char c = (char)value;
+                            char c = Convert.ToChar(value);
                             cAppend("Caráter: " + c.ToString());
                             labelResuDecimal.Text = c.ToString();
                             string binary = Convert.ToString(c, 2);
@@ -121,7 +134,7 @@ namespace asciiApp
             labelResuBinario.Text = "...";
             textBoxDecodificador.Text = "";
 
-            labelEj.Text = "Ej: 9Fh o 30";
+            labelEj.Text = "Ej: ACh o 240";
             labelTitulo.Text = "Ingrese el número Decimal o Hexadecimal a decodificar a carácter";
             labelDecimal.Text = "Carácter";
             labelResuDecimal.Text = "...";
@@ -129,7 +142,7 @@ namespace asciiApp
             labelResuHexadecimal.Hide();
             buttonObtenerASCII.Hide();
             buttonObtenerChar.Show();
-            buttonObtenerChar.Location = new Point(617, 121);
+            buttonObtenerChar.Location = new Point(617, 105);
             labelBinTitle.Location = new Point(8, 238);
             labelResuBinario.Location = new Point(8, 261);
             textBoxDecodificador.MaxLength = 6;
@@ -150,7 +163,7 @@ namespace asciiApp
             labelResuHexadecimal.Show();
             buttonObtenerASCII.Show();
             buttonObtenerChar.Hide();
-            buttonObtenerASCII.Location = new Point(617, 121);
+            buttonObtenerASCII.Location = new Point(617, 105);
             labelBinTitle.Location = new Point(8, 307);
             labelResuBinario.Location = new Point(8, 330);
             textBoxDecodificador.MaxLength = 4;
@@ -173,7 +186,8 @@ namespace asciiApp
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
-
+            string userName = Environment.UserName;
+            cAppend("Bienvenido " +  userName + " a Decodificador ASCII By Franco28");
         }
     }
 }
